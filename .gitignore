@@ -4,6 +4,6 @@
 # Ignore Dataset directories
 **/dataset/*
 !**/dataset/.gitkeep
-**/opencv-venv/*
+**/opencv/*
 **/.vscode/*
 
