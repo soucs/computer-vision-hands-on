@@ -5,6 +5,7 @@ from external.SelfiSegmentationModule import SelfiSegmentation
 
 WIDTH, HEIGHT = (640, 480)
 
+# Resize vid and img to common dimension
 def resize_img(img, width=WIDTH, height=HEIGHT):
     dim = (640, 480)
     return cv.resize(img,dim,interpolation=cv.INTER_AREA)
