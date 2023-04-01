@@ -1,19 +1,15 @@
 import cv2 as cv
 import numpy as np
 
-# cap = cv.VideoCapture(cv.samples.findFile("vtest.avi"))
-
 # Video input
 cap = cv.VideoCapture(r'/home/soucs/Python/computer-vision-hands-on/Q5/dataset/output.mp4')
 
-# Working on 1st frame (?)
 ret, frame1 = cap.read()
 prvs = cv.cvtColor(frame1, cv.COLOR_BGR2GRAY)
 hsv = np.zeros_like(frame1)
 hsv[..., 1] = 255
 
-
-while(1):
+while True:
     ret, frame2 = cap.read()
     if not ret:
         print('No frames grabbed!')
@@ -25,11 +21,7 @@ while(1):
     hsv[..., 2] = cv.normalize(mag, None, 0, 255, cv.NORM_MINMAX)
     bgr = cv.cvtColor(hsv, cv.COLOR_HSV2BGR)
     cv.imshow('frame2', bgr)
-    k = cv.waitKey(30) & 0xff
-    if k == 27:
+    if cv.waitKey(30) == ord('x'):
         break
-    elif k == ord('s'):
-        cv.imwrite('opticalfb.png', frame2)
-        cv.imwrite('opticalhsv.png', bgr)
     prvs = next
 cv.destroyAllWindows()

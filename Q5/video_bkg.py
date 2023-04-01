@@ -19,7 +19,7 @@ while True:
     frame_rmbg = seg.removeBG(frame, bg_img, threshold=0.8)
     cv.imshow('Video', frame_rmbg)
     cv.waitKey(50)
-    if cv.waitKey(1) == ord('x'):
+    if cv.waitKey(30) == ord('x'):
         break
 
 cv.destroyAllWindows()
