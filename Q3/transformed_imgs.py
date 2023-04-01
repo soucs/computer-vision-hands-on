@@ -13,7 +13,6 @@ def gray(img):
 
 org_img = resize_img(cv.imread(r'/home/soucs/Python/computer-vision-hands-on/Q2/dataset/Sunset_org.jpg'))
 dim = org_img.shape
-# cv.imshow('Original Image',org_img)
 
 # Scaled (down) and rotated (90deg clockwise) images
 scaled_img = resize_img(org_img, scale=0.75)
@@ -27,9 +26,15 @@ affine_img = cv.warpAffine(org_img, warp_mat, (dim[1], dim[0]))
 
 # Perspective Transformation image
 srcTri = np.array([[0, 260], [640, 260],[0, 400], [640, 400]],dtype=np.float32)
-# dstTri = np.float32([[0, 0], [400, 0], [0, 640], [400, 640]])
 dstTri = np.array([[0, 0], [640, 260],[0, 400], [640, 400]],dtype=np.float32)
 warp_mat = cv.getPerspectiveTransform(srcTri, dstTri)
 perspective_img = cv.warpPerspective(org_img, warp_mat, (dim[1], dim[0]))
 
-# cv.imshow('Transformed Image', perspective_img)
+# # View Images
+# cv.imshow('Original Image',org_img)
+# cv.imshow('Scaled Image',scaled_img)
+# cv.imshow('Rotate Image',rotate_img)
+# cv.imshow('Affine Image',affine_img)
+# cv.imshow('Perspective Image',perspective_img)
+# cv.waitKey(0)
+# cv.destroyAllWindows()
